@@ -29,10 +29,15 @@ class CalculController extends Controller
     }
     
     public function multiplication(Request $request) {
-        $tableau = $request->json('nombre');
+        $tableau = $request->json('valeurs');
+        $valeur=null;
 
         foreach ($tableau as $value) {
-            return $nombre *= $value;
+            if (!$valeur) {
+                $valeur = $value;
+            }else{
+                return $valeur *= $value;
+            }
         }
 
         // return response()->json([

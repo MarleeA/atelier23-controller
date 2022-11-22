@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('/')->group(function() {
-    Route::get('/oddOrEven/{number}', [CalculController::class, 'numbertest'])->name('calcul.numbertest');
-    Route::post('/api/addition', [CalculController::class, 'addition'])->name('calcul.addition'); 
-    Route::post('/api/multiplication', [CalculController::class, 'multiplication'])->name('calcul.multiplication'); 
-    Route::put('/teapot', [CalculController::class, 'show'])->name('calcul.show');
-    Route::post('/api/division', [CalculController::class, 'division'])->name('calcul.division'); 
-    Route::post('/api/substraction', [CalculController::class, 'substraction'])->name('calcul.substraction');
+    Route::get('/oddOrEven/{number}', [CalculController::class, 'numbertest'])->where('number','[0-9]+');
+    Route::put('/teapot', [CalculController::class, 'show']);
+    Route::post('/api/substraction', [CalculController::class, 'substraction']);
+    
+    // Route::post('/api/addition', [CalculController::class, 'addition'])->name('calcul.addition'); 
+    // Route::post('/api/multiplication', [CalculController::class, 'multiplication'])->name('calcul.multiplication'); 
+    // Route::post('/api/division', [CalculController::class, 'division'])->name('calcul.division'); 
 });
 
 Route::get('/', function () {
